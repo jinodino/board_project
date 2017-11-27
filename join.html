@@ -1,0 +1,89 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+    body {
+        width: 800px;
+        margin: auto;
+    }
+</style>
+<script>
+    function ajax() {
+        var xmlReqObj = new XMLHttpRequest();
+        var idObj   = document.getElementById('id');
+        var nameObj = document.getElementById('name');
+        var pwObj   = document.getElementById('pw');
+        var url = 'join.php?id=' + idObj.value + '&name=' + nameObj.value +  '&pw=' + pwObj.value;
+        xmlReqObj.onreadystatechange = function () {
+            if (xmlReqObj.readyState == 4 && xmlReqObj.status == 200) {
+                idObj.value = xmlReqObj.response;
+                var ii = idObj.value;
+                switch (ii){
+                    case "1":
+                        alert("회원가입이 완료 되었습니다.로그인 하십시오");
+                        location.assign('list.php');
+                        break;
+                    case "2":
+                        alert("이미 있는 사용자 입니다");
+                        break;
+                }
+            }
+        };
+
+        xmlReqObj.open("GET", url, true);
+        xmlReqObj.send();
+    }
+</script>
+<body>
+<center>
+    <table class='table table-striped'>
+        <tr>
+          <td class='active' align='center'>
+              <h1>회원가입</h1>
+          </td>
+        </tr>
+    </table>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="id" class="col-sm-5 control-label">ID</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="id" placeholder="ID" name = 'id'>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="col-sm-5 control-label">Name</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" id="name" placeholder="Name" name = 'name'>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pw" class="col-sm-5 control-label">Password</label>
+            <div class="col-sm-3">
+                <input type="password" class="form-control" id="pw" placeholder="Password" name = 'pw'>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-4">
+                <button type="button" class="btn btn-default" onclick="ajax()">회원가입</button>
+            </div>
+        </div>
+    </form>
+</center>
+</body>
+</html>

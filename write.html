@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<form action = 'write_load.php' method="GET">
+    <table class="table table-bordered">
+        <tr>
+            <td colspan="2">
+                <center><h1>글 쓰기</h1></center>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="title" class="col-sm-1 control-label">제목</label>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control" id="title" placeholder="제목을 입력해주세요" name = 'title'>
+                </div>
+            </td>
+        </tr>
+        <tbody>
+        <td>
+            <textarea class="form-control" rows="30" name = contents>
+
+            </textarea>
+        </td>
+        </tbody>
+        <tr>
+            <td align="right">
+                <button type="button" class="btn btn-warning btn-lg" onclick='returnpage()'>취소하기</button>
+                <button type="submit" class="btn btn-primary  btn-lg ">작성하기</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
